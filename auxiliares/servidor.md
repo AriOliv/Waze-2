@@ -9,6 +9,49 @@ Para a execução correta do projeto, é necessária a instalação e configura�
 
 > Obs: Esses passos foram testados no Ubuntu 20.04
 
+## Usando DOCKER
+
+Basta rodar os seguintes comandos no terminal.
+
+### Instalando o DOCKER
+> Você pode pular esta etapa se já tiver instalado em sua máquina.
+
+- Atualizando o repositório local
+```s
+sudo apt update
+```
+- Instalando o DOCKER
+```s
+sudo apt install docker.io
+```
+- Conferindo a instalação
+```s
+docker --version
+```
+A saída espera será semelhante a esta:
+```s
+Docker version 20.10.7, build 20.10.7-0ubuntu5~20.04.2
+```
+A partir daqui se tudo correr bem teremos o DOCKER instalado com sucesso na máquina.
+
+### Iniciando o container
+- Primeiro se constrói a imagem
+```s
+sudo docker build -t waze2:latest .
+```
+- Agora rodamos o container
+```s
+sudo docker run --name waze-container --rm -p 80:80 waze2:latest
+```
+- Podemos acessar o projeto no seguinte caminho
+```s
+http://localhost/front/
+```
+-- Caso necessário você pode parar o container com o seguinte comando
+```s
+sudo docker stop waze-container
+```
+
 ## Instação do Apache
 
 ```s
@@ -154,12 +197,12 @@ sudo nano /etc/apache2/conf-available/cgi-enabled.conf
 Cole as configurações:
 
 ```s
-<Directory "/var/www/final-project-grupo-2/back_organizado">
+<Directory "/var/www/files/backend">
     Options +ExecCGI
     AddHandler cgi-script .cgi .pl .py .rb
 </Directory>
 
-<Directory "/var/www/final-project-grupo-2/front">
+<Directory "/var/www/files/front">
     Options +ExecCGI
     AddHandler cgi-script .cgi .pl .py .rb
 </Directory>
@@ -176,7 +219,7 @@ systemctl restart apache2
 Por fim, habilite o programa:
 
 ```s
-sudo chmod 755 /var/www/final-project-grupo-2/back_organizado/main.cgi
+sudo chmod 755 /var/www/files/backend/main.cgi
 ```
 
 ## Observação

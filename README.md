@@ -44,5 +44,5 @@ O comando executa o menor caminho entre as coordenadas dadas utilizando o A*.
 Obs: deve-se estar no diretório do programa para executa-lo. Ou seja, antes execute:
 
 ```s
-cd /var/www/final*/back_organizado
+cd /var/www/final*/backend
 ```

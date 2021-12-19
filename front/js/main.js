@@ -17,7 +17,7 @@ class Path {
             this.metric_name = "Distância:"
             this.divisor = 1000
         }
-        fetch(`../../back_organizado/main.cgi?${y1};${x1};${y2};${x2};${algoritmo};${by_travel_time}`)
+        fetch(`../../backend/main.cgi?${y1};${x1};${y2};${x2};${algoritmo};${by_travel_time}`)
             .then(this.onSucess.bind(this))
     }
     async onSucess(response) {
